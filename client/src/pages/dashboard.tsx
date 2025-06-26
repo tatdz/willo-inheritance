@@ -50,9 +50,7 @@ export default function Dashboard() {
             Programmable digital inheritance
           </p>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Secure your digital assets and ensure they reach the right people at the right time. 
-            Create inheritance vaults with smart contracts on Chiliz Chain for CHZ tokens, fan tokens, 
-            NFTs, and other digital assets.
+            Secure your digital assets with smart contract inheritance vaults on Chiliz Chain.
           </p>
         </div>
         
