@@ -125,21 +125,31 @@ export default function Premium() {
       const plan = PLANS.find(p => p.id === planId);
       if (!plan || !plan.priceChz) throw new Error('Invalid plan');
 
-      // Real blockchain transaction for subscription payment
-      const { executeTransaction } = await import('@/lib/web3-utils');
-      const txResult = await executeTransaction('purchaseSubscription', { 
-        plan: planId === 'pro' ? 'pro' : 'enterprise'
-      });
+      if (!wallet.isConnected) {
+        throw new Error('Wallet not connected');
+      }
+
+      // Import contract client and connect wallet
+      const { contractClient } = await import('@/lib/contract-integration');
+      await contractClient.connect(wallet.address as `0x${string}`);
+      
+      // Execute blockchain transaction for subscription payment
+      const txResult = await contractClient.purchaseSubscription(
+        planId === 'pro' ? 'pro' : 'enterprise'
+      );
       
       // Update subscription in backend
       const response = await apiRequest('POST', '/api/subscription', {
         plan: planId,
         status: 'active',
-        transactionHash: txResult.hash,
+        transactionHash: txResult,
         expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days
       });
       
-      return { subscription: await response.json(), transaction: txResult };
+      return { 
+        subscription: await response.json(), 
+        transaction: { hash: txResult, status: 'confirmed' as const }
+      };
     },
     onSuccess: ({ subscription, transaction }) => {
       setTransactionModal({
@@ -155,16 +165,18 @@ export default function Premium() {
         setTransactionModal({ isOpen: false, status: 'pending', message: '' });
       }, 3000);
     },
-    onError: (error) => {
+    onError: (error: any) => {
+      console.error('Upgrade error:', error);
+      
       setTransactionModal({
         isOpen: true,
         status: 'failed',
-        message: 'Failed to upgrade subscription. Please try again.',
+        message: error.message || 'Failed to upgrade subscription. Please try again.',
       });
       
       toast({
         title: "Upgrade Failed",
-        description: "Failed to upgrade subscription. Please try again.",
+        description: error.message || "Failed to upgrade subscription. Please try again.",
         variant: "destructive",
       });
     },
@@ -319,7 +331,11 @@ export default function Premium() {
                         plan.popular && !isCurrentPlan ? 'bg-primary hover:bg-blue-700' : ''
                       } ${isCurrentPlan ? 'bg-gray-50 cursor-not-allowed' : ''}`}
                       disabled={isCurrentPlan || upgradeMutation.isPending}
-                      onClick={() => canUpgrade && handleUpgrade(plan.id)}
+                      onClick={() => {
+                        if (plan.id !== 'basic' && !isCurrentPlan) {
+                          handleUpgrade(plan.id);
+                        }
+                      }}
                     >
                       {isCurrentPlan ? 'Current Plan' : 
                        upgradeMutation.isPending ? 'Processing...' : 

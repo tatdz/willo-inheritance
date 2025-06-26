@@ -446,6 +446,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Subscription endpoints
+  app.get("/api/subscription", async (req, res) => {
+    try {
+      // For demo purposes, return mock subscription data
+      const userId = 1; // Mock user ID
+      const subscription = await storage.getSubscriptionByUserId(userId);
+      
+      if (!subscription) {
+        return res.json({ plan: 'basic', status: 'active' });
+      }
+      
+      res.json(subscription);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch subscription" });
+    }
+  });
+
+  app.post("/api/subscription", async (req, res) => {
+    try {
+      const { plan, status, transactionHash, expiresAt } = req.body;
+      
+      if (!plan || !status) {
+        return res.status(400).json({ message: "Plan and status are required" });
+      }
+
+      const userId = 1; // Mock user ID
+      
+      // Check if subscription exists
+      const existingSubscription = await storage.getSubscriptionByUserId(userId);
+      
+      let subscription;
+      if (existingSubscription) {
+        subscription = await storage.updateSubscription(existingSubscription.id, {
+          plan,
+          status,
+          transactionHash,
+          expiresAt: expiresAt ? new Date(expiresAt) : undefined
+        });
+      } else {
+        subscription = await storage.createSubscription({
+          userId,
+          plan,
+          status,
+          transactionHash,
+          expiresAt: expiresAt ? new Date(expiresAt) : undefined
+        });
+      }
+
+      res.json(subscription);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      res.status(500).json({ message: "Failed to update subscription" });
+    }
+  });
+
   // Reset endpoint for demo purposes
   app.post("/api/reset", async (req, res) => {
     try {
