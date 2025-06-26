@@ -228,7 +228,7 @@ export class WilloContractClient {
       throw new Error('Wallet not connected');
     }
 
-    const planId = plan === 'pro' ? 1n : 2n;
+    const planId = plan === 'pro' ? BigInt(1) : BigInt(2);
     const value = plan === 'pro' ? parseEther('50') : parseEther('150');
 
     try {

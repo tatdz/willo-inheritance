@@ -106,6 +106,14 @@ Willo is a digital inheritance platform built for managing cryptocurrency, NFTs,
 
 ```
 Recent Changes:
+- June 26, 2025: Fixed upgrade button functionality and pushed updates to GitHub
+  - Fixed failing Pro and Enterprise subscription upgrade buttons
+  - Enhanced wallet connection verification and error handling
+  - Added proper blockchain transaction integration with fallback demo mode
+  - Created subscription API endpoints in backend for payment processing
+  - Fixed TypeScript errors and BigInt compatibility issues
+  - Updated database schema to include transaction hash storage
+  - Pushed complete fixes to GitHub repository with working upgrade functionality
 - June 25, 2025: Successful GitHub repository deployment
   - Successfully uploaded complete Willo dApp to https://github.com/tatdz/willo-inheritance
   - 117 objects and 105 files pushed to main branch using working GitHub token

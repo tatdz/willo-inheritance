@@ -42,7 +42,10 @@ export function Header() {
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 <WilloLogo size="md" className="mr-3" />
-                <h1 className="text-xl font-bold text-gray-900">Willo</h1>
+                <div className="flex flex-col">
+                  <h1 className="text-xl font-bold text-gray-900">Willo</h1>
+                  <p className="text-xs text-gray-500 -mt-1">Programmable digital inheritance</p>
+                </div>
               </div>
               <nav className="hidden md:ml-10 md:flex space-x-8">
                 {navigation.map((item) => (

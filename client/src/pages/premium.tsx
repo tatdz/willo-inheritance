@@ -204,7 +204,7 @@ export default function Premium() {
     upgradeMutation.mutate(planId);
   };
 
-  const currentPlan = subscription?.plan || 'basic';
+  const currentPlan = (subscription as any)?.plan || 'basic';
 
   if (!wallet.isConnected) {
     return (
@@ -252,9 +252,9 @@ export default function Premium() {
                     ? 'You have access to basic vault functionality' 
                     : 'You have access to premium features'}
                 </p>
-                {subscription?.expiresAt && (
+                {(subscription as any)?.expiresAt && (
                   <p className="text-sm text-gray-500 mt-1">
-                    Expires: {new Date(subscription.expiresAt).toLocaleDateString()}
+                    Expires: {new Date((subscription as any).expiresAt).toLocaleDateString()}
                   </p>
                 )}
               </div>

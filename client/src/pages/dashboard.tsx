@@ -11,7 +11,9 @@ import {
   UserPlus,
   Edit,
   TrendingUp,
-  DollarSign
+  DollarSign,
+  Wallet,
+  Shield
 } from "lucide-react";
 import { useWallet } from "@/hooks/use-wallet";
 import { usePortfolioValue } from "@/hooks/use-price";
@@ -40,13 +42,63 @@ export default function Dashboard() {
   if (!wallet.isConnected) {
     return (
       <div className="max-w-4xl mx-auto py-12 text-center">
-        <div className="h-16 w-16 bg-gray-300 rounded-lg mx-auto mb-4"></div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Connect Your Wallet
-        </h2>
-        <p className="text-gray-600 mb-6">
-          Please connect your wallet to access your Willo dashboard.
-        </p>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">
+            Willo
+          </h1>
+          <p className="text-xl text-primary font-medium mb-2">
+            Programmable digital inheritance
+          </p>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+            Secure your digital assets and ensure they reach the right people at the right time. 
+            Create inheritance vaults with smart contracts on Chiliz Chain for CHZ tokens, fan tokens, 
+            NFTs, and other digital assets.
+          </p>
+        </div>
+        
+        <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
+          <div className="h-16 w-16 bg-primary/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
+            <Wallet className="h-8 w-8 text-primary" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Connect Your Wallet
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Please connect your wallet to access your Willo dashboard and start creating inheritance vaults.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="h-12 w-12 bg-blue-100 rounded-lg mb-4 flex items-center justify-center">
+              <Shield className="h-6 w-6 text-blue-600" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure Vaults</h3>
+            <p className="text-gray-600 text-sm">
+              Create smart contract-powered inheritance vaults with multi-signature guardian approval and customizable rules.
+            </p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="h-12 w-12 bg-green-100 rounded-lg mb-4 flex items-center justify-center">
+              <TrendingUp className="h-6 w-6 text-green-600" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Real-time Tracking</h3>
+            <p className="text-gray-600 text-sm">
+              Monitor your CHZ and fan token holdings with live price feeds and portfolio value calculations.
+            </p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="h-12 w-12 bg-purple-100 rounded-lg mb-4 flex items-center justify-center">
+              <UserPlus className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Easy Management</h3>
+            <p className="text-gray-600 text-sm">
+              Add beneficiaries, upload documents, and manage inheritance rules through an intuitive interface.
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
