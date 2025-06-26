@@ -44,7 +44,7 @@ export function Header() {
                 <WilloLogo size="md" className="mr-3" />
                 <div className="flex flex-col">
                   <h1 className="text-xl font-bold text-gray-900">Willo</h1>
-                  <p className="text-xs text-gray-500 -mt-1">Programmable digital inheritance</p>
+                  <p className="text-xs text-gray-500 leading-tight">Programmable digital inheritance</p>
                 </div>
               </div>
               <nav className="hidden md:ml-10 md:flex space-x-8">

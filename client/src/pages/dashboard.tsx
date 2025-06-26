@@ -46,7 +46,7 @@ export default function Dashboard() {
           <h1 className="text-4xl font-bold text-gray-900 mb-3">
             Willo
           </h1>
-          <p className="text-xl text-primary font-medium mb-2">
+          <p className="text-xl text-blue-600 font-medium mb-2">
             Programmable digital inheritance
           </p>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
