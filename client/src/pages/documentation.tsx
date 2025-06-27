@@ -186,7 +186,7 @@ export default function Documentation() {
           <div>
             <h3 className="text-lg font-semibold mb-3">Getting Started</h3>
             <ol className="space-y-2 text-sm">
-              <li><strong>1. Connect Your Wallet</strong> - Choose MetaMask, WalletConnect, or Demo wallet</li>
+              <li><strong>1. Connect Your Wallet</strong> - Choose Socios, WalletConnect, or Demo wallet</li>
               <li><strong>2. Create Your First Vault</strong> - Set name, description, and inactivity period (30-3650 days)</li>
               <li><strong>3. Add Assets</strong> - Include CHZ tokens, Fan Tokens (BAR, PSG, JUV, ACM), and NFTs</li>
               <li><strong>4. Designate Beneficiaries</strong> - Add names, emails, wallet addresses, and allocation percentages</li>
@@ -358,6 +358,206 @@ export default function Documentation() {
                     <li>• Type-safe operations</li>
                     <li>• Migration support</li>
                   </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Troubleshooting */}
+      <Card id="troubleshooting">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Troubleshooting
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Wallet Connection Issues</h3>
+            <div className="space-y-4">
+              <div className="bg-red-50 p-4 rounded-lg">
+                <h4 className="font-medium text-red-800 mb-2">Socios Wallet Connection Problems</h4>
+                <div className="text-sm text-red-700 space-y-2">
+                  <p><strong>Problem:</strong> QR code not appearing or connection timeout</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Ensure you have the Socios app installed on your mobile device</li>
+                      <li>• Check that your phone and computer are on the same network</li>
+                      <li>• Clear your browser cache and refresh the page</li>
+                      <li>• Try using a different browser (Chrome, Firefox, Safari)</li>
+                      <li>• Disable browser ad blockers and privacy extensions temporarily</li>
+                      <li>• If timeout occurs, try again after 30 seconds</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 p-4 rounded-lg">
+                <h4 className="font-medium text-amber-800 mb-2">Network Connection Issues</h4>
+                <div className="text-sm text-amber-700 space-y-2">
+                  <p><strong>Problem:</strong> Wrong network or network switching fails</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Manually switch to Chiliz Chain in your wallet</li>
+                      <li>• Add Chiliz network manually if not available:</li>
+                      <li className="ml-4">- Network Name: Chiliz Chain</li>
+                      <li className="ml-4">- RPC URL: https://rpc.chiliz.com</li>
+                      <li className="ml-4">- Chain ID: 88888</li>
+                      <li className="ml-4">- Symbol: CHZ</li>
+                      <li className="ml-4">- Block Explorer: https://scan.chiliz.com</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-medium text-blue-800 mb-2">WalletConnect Issues</h4>
+                <div className="text-sm text-blue-700 space-y-2">
+                  <p><strong>Problem:</strong> Connection request already pending or wallet not responding</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Close and reopen your wallet app</li>
+                      <li>• Clear WalletConnect sessions in your wallet settings</li>
+                      <li>• Restart your browser and try connecting again</li>
+                      <li>• Try using the Demo wallet for testing purposes</li>
+                      <li>• Check if your wallet supports Chiliz Chain</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Common Application Errors</h3>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-800 mb-2">Transaction Failures</h4>
+                <div className="text-sm text-gray-700 space-y-2">
+                  <p><strong>Symptoms:</strong> "Transaction failed" or "Insufficient funds" errors</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Ensure you have enough CHZ for gas fees</li>
+                      <li>• Check that you're connected to Chiliz Chain</li>
+                      <li>• Try reducing the transaction amount</li>
+                      <li>• Wait a few minutes and retry the transaction</li>
+                      <li>• Contact support if issue persists</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-800 mb-2">Asset Loading Problems</h4>
+                <div className="text-sm text-gray-700 space-y-2">
+                  <p><strong>Symptoms:</strong> Assets not appearing or prices showing as zero</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Refresh the page to reload asset data</li>
+                      <li>• Check your internet connection</li>
+                      <li>• Verify you're connected to the correct wallet</li>
+                      <li>• Wait 30 seconds for price data to update</li>
+                      <li>• Clear browser cache and cookies</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-800 mb-2">Vault Creation Issues</h4>
+                <div className="text-sm text-gray-700 space-y-2">
+                  <p><strong>Symptoms:</strong> Vault creation fails or data not saving</p>
+                  <div>
+                    <strong>Solutions:</strong>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>• Ensure all required fields are filled correctly</li>
+                      <li>• Check that beneficiary wallet addresses are valid</li>
+                      <li>• Verify allocation percentages add up to 100%</li>
+                      <li>• Use a valid email format for notifications</li>
+                      <li>• Try creating a simpler vault first to test</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Performance & Browser Issues</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h4 className="font-medium">Supported Browsers</h4>
+                <div className="text-sm text-gray-600 space-y-1">
+                  <div>✅ Chrome 90+ (Recommended)</div>
+                  <div>✅ Firefox 88+</div>
+                  <div>✅ Safari 14+</div>
+                  <div>✅ Edge 90+</div>
+                  <div>❌ Internet Explorer (Not supported)</div>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h4 className="font-medium">Performance Tips</h4>
+                <div className="text-sm text-gray-600 space-y-1">
+                  <div>• Disable unnecessary browser extensions</div>
+                  <div>• Close other tabs to free up memory</div>
+                  <div>• Use incognito mode to test issues</div>
+                  <div>• Keep your browser updated</div>
+                  <div>• Clear cache if experiencing slowness</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Getting Help</h3>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <h4 className="font-medium text-green-800 mb-2">Support Channels</h4>
+              <div className="text-sm text-green-700 space-y-2">
+                <p><strong>Before contacting support, please:</strong></p>
+                <ul className="ml-4 space-y-1">
+                  <li>• Try the solutions listed above</li>
+                  <li>• Note your browser and wallet type</li>
+                  <li>• Take a screenshot of any error messages</li>
+                  <li>• Record the steps that led to the issue</li>
+                </ul>
+                <div className="mt-3">
+                  <strong>Contact Options:</strong>
+                  <ul className="ml-4 mt-1 space-y-1">
+                    <li>• GitHub Issues: <a href="https://github.com/tatdz/willo-inheritance/issues" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Report a bug</a></li>
+                    <li>• Documentation: <a href="https://github.com/tatdz/willo-inheritance#readme" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Full README</a></li>
+                    <li>• Community: Check existing issues for similar problems</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Error Code Reference</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h4 className="font-medium mb-2">Wallet Errors</h4>
+                <div className="space-y-1 font-mono bg-gray-50 p-3 rounded">
+                  <div><span className="text-red-600">4001:</span> User rejected connection</div>
+                  <div><span className="text-red-600">-32002:</span> Request already pending</div>
+                  <div><span className="text-red-600">4902:</span> Chain not added to wallet</div>
+                  <div><span className="text-red-600">-32603:</span> Internal JSON-RPC error</div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium mb-2">Network Errors</h4>
+                <div className="space-y-1 font-mono bg-gray-50 p-3 rounded">
+                  <div><span className="text-red-600">TIMEOUT:</span> Connection timeout</div>
+                  <div><span className="text-red-600">NETWORK:</span> RPC node unavailable</div>
+                  <div><span className="text-red-600">CHAIN_ID:</span> Wrong network</div>
+                  <div><span className="text-red-600">GAS:</span> Insufficient gas fees</div>
                 </div>
               </div>
             </div>
