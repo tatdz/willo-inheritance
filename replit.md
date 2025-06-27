@@ -106,11 +106,11 @@ Willo is a digital inheritance platform built for managing cryptocurrency, NFTs,
 
 ```
 Recent Changes:
-- June 26, 2025: Added Willo slogan and enhanced welcome experience
-  - Added "Programmable digital inheritance" slogan to header visible on all pages
-  - Enhanced dashboard welcome page for users before wallet connection
+- June 26, 2025: Enhanced welcome experience and cleaned up header
+  - Removed slogan from header for cleaner presentation
+  - Enhanced dashboard welcome page with "Programmable digital inheritance" tagline
   - Added feature highlights: Secure Vaults, Real-time Tracking, Easy Management
-  - Improved first-time user experience with clear value proposition
+  - Simplified description text for better user experience
   - Users now understand Willo's purpose without needing to connect wallet
   - Pushed updates to both deployed app and GitHub repository
 - June 26, 2025: Fixed upgrade button functionality and pushed updates to GitHub

@@ -10,7 +10,7 @@ export interface WalletState {
 
 interface WalletContextType {
   wallet: WalletState;
-  connectWallet: (walletType: 'metamask' | 'demo' | 'reown') => Promise<void>;
+  connectWallet: (walletType: 'socios' | 'demo' | 'reown') => Promise<void>;
   disconnectWallet: () => void;
   switchNetwork: () => Promise<void>;
   isLoading: boolean;
@@ -69,41 +69,79 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const connectWallet = async (walletType: 'metamask' | 'demo' | 'reown'): Promise<void> => {
+  const connectWallet = async (walletType: 'socios' | 'demo' | 'reown'): Promise<void> => {
     setIsLoading(true);
     
     try {
-      if (walletType === 'metamask') {
-        // Check for MetaMask
-        const ethereum = (window as any)?.ethereum;
+      if (walletType === 'socios') {
+        // Socios Wallet connection using WalletConnect protocol
+        const { createWeb3Modal, defaultWagmiConfig } = await import('@web3modal/wagmi/react');
+        const { mainnet, chiliz } = await import('wagmi/chains');
         
-        if (!ethereum || !ethereum.isMetaMask) {
-          throw new Error('MetaMask is not installed. Please install MetaMask extension from https://metamask.io');
-        }
+        const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'demo-project-id';
+        
+        const metadata = {
+          name: 'Willo - Digital Inheritance',
+          description: 'Secure digital asset inheritance on Chiliz Chain',
+          url: 'https://willo.app',
+          icons: ['https://avatars.githubusercontent.com/u/37784886']
+        };
 
-        // Request account access
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        
-        if (!accounts || accounts.length === 0) {
-          throw new Error('No accounts found. Please unlock MetaMask and try again.');
-        }
-
-        const chainId = await ethereum.request({ method: 'eth_chainId' });
-        const balance = await ethereum.request({
-          method: 'eth_getBalance',
-          params: [accounts[0], 'latest']
-        });
-        
-        setWallet({
-          isConnected: true,
-          address: accounts[0],
-          network: MOCK_NETWORKS[chainId as keyof typeof MOCK_NETWORKS] || 'Unknown Network',
-          balance: (parseInt(balance, 16) / 1e18).toFixed(4),
-          isCorrectNetwork: chainId === CHILIZ_CHAIN_ID || chainId === CHILIZ_TESTNET_CHAIN_ID,
+        const chains = [chiliz, mainnet] as const;
+        const config = defaultWagmiConfig({
+          chains,
+          projectId,
+          metadata,
+          enableWalletConnect: true,
+          enableInjected: true,
+          enableEIP6963: true,
+          enableCoinbase: true,
         });
 
-        // Initialize contract client for real transactions
-        try {
+        const modal = createWeb3Modal({
+          wagmiConfig: config,
+          projectId,
+          enableAnalytics: true,
+          themeMode: 'light',
+          themeVariables: {
+            '--w3m-color-mix': '#1E40AF',
+            '--w3m-color-mix-strength': 20
+          }
+        });
+
+        // Wait for Socios wallet connection
+        await new Promise<void>((resolve, reject) => {
+          const timeout = setTimeout(() => {
+            reject(new Error('Connection timeout - please try again'));
+          }, 30000);
+
+          const checkConnection = () => {
+            try {
+              const account = config?.state?.connections?.get(
+                config?.state?.current || ''
+              )?.accounts?.[0];
+              
+              if (account) {
+                clearTimeout(timeout);
+                setWallet({
+                  isConnected: true,
+                  address: account,
+                  network: 'Chiliz Chain',
+                  balance: '0.0000',
+                  isCorrectNetwork: true,
+                });
+                resolve();
+              } else {
+                setTimeout(checkConnection, 1000);
+              }
+            } catch (error) {
+              setTimeout(checkConnection, 1000);
+            }
+          };
+
+          modal.open();
+          checkConnection();
+        });
           const { contractClient } = await import('@/lib/contract-integration');
           await contractClient.connect(accounts[0] as `0x${string}`);
         } catch (error) {
@@ -260,6 +298,50 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           console.error('Reown connection error:', error);
           throw new Error('Failed to connect via WalletConnect. Please ensure you have the WalletConnect Project ID configured.');
         }
+      } else if (walletType === 'demo') {
+        // Demo wallet connection - simulates realistic CHZ wallet with fan tokens and NFTs
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        setWallet({
+          isConnected: true,
+          address: '0x742d35Cc6634C0532925a3b8D186Ad6c23F3B02e',
+          network: 'Chiliz Chain',
+          balance: '12,500.0000',
+          isCorrectNetwork: true,
+        });
+        
+        // Log simulated portfolio for demo purposes
+        console.log('🚀 Demo Wallet Connected - Simulated Portfolio:');
+        console.log('💰 CHZ Balance: 12,500 CHZ ($8,750)');
+        console.log('🏆 Fan Tokens:');
+        console.log('  - FC Barcelona (BAR): 150 tokens');
+        console.log('  - Paris Saint-Germain (PSG): 200 tokens'); 
+        console.log('  - Juventus (JUV): 100 tokens');
+        console.log('  - AC Milan (ACM): 75 tokens');
+        console.log('🎨 NFT Collections:');
+        console.log('  - 3 Rare Sports Trading Cards');
+        console.log('  - 2 VIP Stadium Access Passes');
+        console.log('  - 1 Limited Edition Team Jersey NFT');
+      } else {
+        throw new Error('Unknown wallet type');
+      }
+    } catch (error: any) {
+      console.error('Failed to connect wallet:', error);
+      
+      // Handle specific error codes
+      if (error.code === 4001) {
+        throw new Error('Connection rejected. Please approve the connection request in your wallet.');
+      } else if (error.code === -32002) {
+        throw new Error('Connection request already pending. Please check your wallet app.');
+      } else if (error.message?.includes('timeout')) {
+        throw new Error('Connection timeout. Please try again.');
+      } else {
+        throw new Error(error.message || 'Failed to connect wallet. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
       } else if (walletType === 'demo') {
         // Demo wallet connection - simulates realistic CHZ wallet with fan tokens and NFTs
