@@ -106,6 +106,14 @@ Willo is a digital inheritance platform built for managing cryptocurrency, NFTs,
 
 ```
 Recent Changes:
+- June 27, 2025: Added comprehensive troubleshooting documentation
+  - Created detailed wallet connection troubleshooting section with Socios-specific solutions
+  - Added network configuration guides for Chiliz Chain manual setup
+  - Included WalletConnect connection issues and browser compatibility information
+  - Added common application error solutions and error code reference
+  - Updated documentation to reflect Socios wallet as primary connection method
+  - Provided complete support channels and contact information for user assistance
+  - Pushed comprehensive troubleshooting guide to GitHub repository
 - June 27, 2025: Replaced MetaMask with Socios wallet integration
   - Removed MetaMask wallet option from connection modal
   - Added Socios wallet as primary connection method using WalletConnect protocol
