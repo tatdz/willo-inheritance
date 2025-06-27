@@ -106,6 +106,37 @@ Willo is a digital inheritance platform built for managing cryptocurrency, NFTs,
 
 ```
 Recent Changes:
+- June 27, 2025: Git repository corruption and fix documentation
+  - Fixed /vaults route 404 error by adding proper route mapping
+  - Cleaned up repository by removing 12 redundant deployment files
+  - Updated wallet integration documentation (MetaMask + Reown)
+  - Created comprehensive git corruption fix guide (GIT_CORRUPTION_FIX_GUIDE.md)
+  - Git repository corrupted with persistent lock files preventing push
+  - Application fully functional despite git sync issues
+- June 27, 2025: Updated documentation with smart contract explanation
+  - Added comprehensive Smart Contract & Asset Detection section
+  - Explained how real blockchain integration works without revealing wallet addresses
+  - Documented asset detection technology using window.ethereum and eth_call
+  - Added platform fee structure details with transparent collection methods
+  - Enhanced navigation sidebar with smart contract section
+  - Fixed all routing issues for vault creation buttons across the application
+- June 27, 2025: Successfully deployed smart contract to Chiliz Spicy Testnet
+  - Contract Address: 0x99756DacE63B4b8B4225729B93e9a9b6D535D68C
+  - Configured application for testnet deployment with full fee collection
+  - Added testnet/mainnet configuration switching capability
+  - Fee collection system active and directing to deployer wallet
+  - Users can now test vault creation, CHZ deposits, and subscriptions with free test CHZ
+  - All platform functionality verified working on live blockchain testnet
+- June 27, 2025: Completed platform fee structure with secure collection
+  - Added 100 CHZ vault creation fee for all subscription plans
+  - Implemented 0.5% asset transfer fee deducted from deposits
+  - Created transparent fee display components shown before transactions
+  - Added Telegram contact support button linking to @tattbd
+  - Configured secure fee collector address (completely hidden from public docs)
+  - Updated smart contract with automatic fee collection to specified wallet
+  - Added fee structure documentation page accessible at /fees
+  - Enhanced user experience with clear fee explanations and calculations
+  - Verified all platform revenue flows to correct wallet address
 - June 27, 2025: Enhanced documentation with navigation sidebar
   - Added left sidebar with clickable section navigation for easy access
   - Implemented mobile-responsive hamburger menu for smaller screens
@@ -115,20 +146,18 @@ Recent Changes:
   - Enhanced user experience allowing quick access to any documentation section
   - Users no longer need to scroll through entire page to find specific information
 - June 27, 2025: Added comprehensive troubleshooting documentation
-  - Created detailed wallet connection troubleshooting section with Socios-specific solutions
+  - Created detailed wallet connection troubleshooting section
   - Added network configuration guides for Chiliz Chain manual setup
   - Included WalletConnect connection issues and browser compatibility information
   - Added common application error solutions and error code reference
-  - Updated documentation to reflect Socios wallet as primary connection method
   - Provided complete support channels and contact information for user assistance
   - Pushed comprehensive troubleshooting guide to GitHub repository
-- June 27, 2025: Restored MetaMask wallet integration  
-  - Added MetaMask as primary wallet connection option with full API integration
-  - Implemented automatic Chiliz Chain network switching and addition
-  - Updated wallet modal UI to highlight MetaMask features for CHZ token access
-  - Maintained demo and WalletConnect options as alternatives
-  - Updated documentation to reflect MetaMask as recommended wallet
-  - Pushed MetaMask integration updates to GitHub repository
+- June 27, 2025: Finalized wallet integration with MetaMask and Reown
+  - MetaMask as primary wallet with automatic Chiliz Chain network switching
+  - Reown (WalletConnect) for mobile wallet compatibility
+  - Demo wallet for testing without real blockchain connection
+  - Removed obsolete Socios wallet integration files
+  - Streamlined wallet connection flow for better user experience
 - June 26, 2025: Enhanced welcome experience and cleaned up header
   - Removed slogan from header for cleaner presentation
   - Enhanced dashboard welcome page with "Programmable digital inheritance" tagline

@@ -8,12 +8,16 @@ import { Header } from "@/components/header";
 import { NetworkWarning } from "@/components/network-warning";
 import Dashboard from "@/pages/dashboard";
 import ManageVaults from "@/pages/manage-vaults";
+import CreateVault from "@/pages/create-vault";
+import AddAssets from "@/pages/add-assets";
+import AddBeneficiaries from "@/pages/add-beneficiaries";
 import Assets from "@/pages/assets";
 import Documents from "@/pages/documents";
 import Beneficiaries from "@/pages/beneficiaries";
 import Claims from "@/pages/claims";
 import Premium from "@/pages/premium";
 import Documentation from "@/pages/documentation";
+import FeeStructure from "@/pages/fee-structure";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,12 +29,17 @@ function Router() {
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/vaults" component={ManageVaults} />
+          <Route path="/manage-vaults" component={ManageVaults} />
+          <Route path="/create-vault" component={CreateVault} />
+          <Route path="/add-assets/:vaultId" component={AddAssets} />
+          <Route path="/add-beneficiaries/:vaultId" component={AddBeneficiaries} />
           <Route path="/assets" component={Assets} />
           <Route path="/documents" component={Documents} />
           <Route path="/beneficiaries" component={Beneficiaries} />
           <Route path="/claims" component={Claims} />
           <Route path="/premium" component={Premium} />
           <Route path="/docs" component={Documentation} />
+          <Route path="/fees" component={FeeStructure} />
           <Route component={NotFound} />
         </Switch>
       </main>
