@@ -106,6 +106,14 @@ Willo is a digital inheritance platform built for managing cryptocurrency, NFTs,
 
 ```
 Recent Changes:
+- June 27, 2025: Enhanced documentation with navigation sidebar
+  - Added left sidebar with clickable section navigation for easy access
+  - Implemented mobile-responsive hamburger menu for smaller screens
+  - Created smooth scrolling functionality to jump between documentation sections
+  - Added auto-close sidebar feature on mobile after navigation
+  - Organized all content sections with proper IDs for seamless navigation
+  - Enhanced user experience allowing quick access to any documentation section
+  - Users no longer need to scroll through entire page to find specific information
 - June 27, 2025: Added comprehensive troubleshooting documentation
   - Created detailed wallet connection troubleshooting section with Socios-specific solutions
   - Added network configuration guides for Chiliz Chain manual setup
@@ -114,12 +122,13 @@ Recent Changes:
   - Updated documentation to reflect Socios wallet as primary connection method
   - Provided complete support channels and contact information for user assistance
   - Pushed comprehensive troubleshooting guide to GitHub repository
-- June 27, 2025: Replaced MetaMask with Socios wallet integration
-  - Removed MetaMask wallet option from connection modal
-  - Added Socios wallet as primary connection method using WalletConnect protocol
-  - Updated UI to highlight Socios wallet features for fan token access
-  - Maintained demo and Reown wallet options as alternatives
-  - Pushed updates to both deployed app and GitHub repository
+- June 27, 2025: Restored MetaMask wallet integration  
+  - Added MetaMask as primary wallet connection option with full API integration
+  - Implemented automatic Chiliz Chain network switching and addition
+  - Updated wallet modal UI to highlight MetaMask features for CHZ token access
+  - Maintained demo and WalletConnect options as alternatives
+  - Updated documentation to reflect MetaMask as recommended wallet
+  - Pushed MetaMask integration updates to GitHub repository
 - June 26, 2025: Enhanced welcome experience and cleaned up header
   - Removed slogan from header for cleaner presentation
   - Enhanced dashboard welcome page with "Programmable digital inheritance" tagline

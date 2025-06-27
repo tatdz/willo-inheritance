@@ -139,7 +139,7 @@ export default function Documentation() {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">For Users</h3>
                   <ol className="space-y-2 text-sm">
-                    <li>1. Connect your wallet (Socios, WalletConnect, or Demo)</li>
+                    <li>1. Connect your wallet (MetaMask, WalletConnect, or Demo)</li>
                     <li>2. Create your first inheritance vault</li>
                     <li>3. Add your CHZ tokens, Fan Tokens, and NFTs</li>
                     <li>4. Designate beneficiaries with allocation percentages</li>
@@ -247,7 +247,7 @@ export default function Documentation() {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Getting Started</h3>
                 <ol className="space-y-2 text-sm">
-                  <li><strong>1. Connect Your Wallet</strong> - Choose Socios, WalletConnect, or Demo wallet</li>
+                  <li><strong>1. Connect Your Wallet</strong> - Choose MetaMask, WalletConnect, or Demo wallet</li>
                   <li><strong>2. Create Your First Vault</strong> - Set name, description, and inactivity period (30-3650 days)</li>
                   <li><strong>3. Add Assets</strong> - Include CHZ tokens, Fan Tokens (BAR, PSG, JUV, ACM), and NFTs</li>
                   <li><strong>4. Designate Beneficiaries</strong> - Add names, emails, wallet addresses, and allocation percentages</li>
@@ -439,18 +439,18 @@ export default function Documentation() {
                 <h3 className="text-lg font-semibold mb-3">Wallet Connection Issues</h3>
                 <div className="space-y-4">
                   <div className="bg-red-50 p-4 rounded-lg">
-                    <h4 className="font-medium text-red-800 mb-2">Socios Wallet Connection Problems</h4>
+                    <h4 className="font-medium text-red-800 mb-2">MetaMask Connection Problems</h4>
                     <div className="text-sm text-red-700 space-y-2">
-                      <p><strong>Problem:</strong> QR code not appearing or connection timeout</p>
+                      <p><strong>Problem:</strong> MetaMask not detected or connection fails</p>
                       <div>
                         <strong>Solutions:</strong>
                         <ul className="ml-4 mt-1 space-y-1">
-                          <li>• Ensure you have the Socios app installed on your mobile device</li>
-                          <li>• Check that your phone and computer are on the same network</li>
-                          <li>• Clear your browser cache and refresh the page</li>
-                          <li>• Try using a different browser (Chrome, Firefox, Safari)</li>
-                          <li>• Disable browser ad blockers and privacy extensions temporarily</li>
-                          <li>• If timeout occurs, try again after 30 seconds</li>
+                          <li>• Ensure MetaMask browser extension is installed and unlocked</li>
+                          <li>• Refresh the page and try connecting again</li>
+                          <li>• Check that MetaMask is enabled for this website</li>
+                          <li>• Try using a different browser (Chrome, Firefox, Edge)</li>
+                          <li>• Disable conflicting wallet extensions temporarily</li>
+                          <li>• Update MetaMask to the latest version</li>
                         </ul>
                       </div>
                     </div>
@@ -645,7 +645,7 @@ export default function Documentation() {
                   <li>✅ Asset tracking and management</li>
                   <li>✅ Beneficiary designation system</li>
                   <li>✅ Basic claims processing</li>
-                  <li>✅ Wallet integration (Socios, Demo, WalletConnect)</li>
+                  <li>✅ Wallet integration (MetaMask, Demo, WalletConnect)</li>
                 </ul>
               </div>
 
